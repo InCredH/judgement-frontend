@@ -1,96 +1,49 @@
-import React, { useState } from "react";
-import {
-  StyleSheet,
-  Text,
-  TextInput,
-  View,
-  Button,
-  FlatList,
-} from "react-native";
-import { Client } from "@stomp/stompjs";
-import "../global.css";
-import { Link } from "expo-router";
+import React from "react";
+import { View, StatusBar, TouchableOpacity, Text } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { Link } from "expo-router";
+// import TypeWriter from "react-native-typewriter";
 
 const App = () => {
-  const [roomScreen, setRoomScreen] = useState(false);
-  const [howToPlay, setHowToPlay] = useState(false);
-
   return (
-    
-    <SafeAreaView className="items-center bg-background h-full">
-      <View>
-        <Text className="text-[50px] font-primary text-primary">Game title</Text>
-        <View className="items-center">
-          <Button
-            onPress={() => {
-              setRoomScreen(true);
-            }}
-            title="Play"
-            color="#3E7B27"
-            accessibilityLabel="To play the game"
-          />
-          <Button
-            onPress={() => {
-              setHowToPlay(true);
-            }}
-            title="How to Play"
-            color="#841584"
-            accessibilityLabel="To play the game"
-          />
+    <View className="flex-1 bg-[#090959]">
+      {/* Full-screen background */}
+      <StatusBar hidden={true} />
+      <SafeAreaView className="flex-1">
+        <View className="flex-1 justify-center items-center w-full">
+          {/* Title with Typewriter Effect */}
+          {/* <TypeWriter
+            className="text-heading text-textPrimary mb-8 text-shadow-lg"
+            typing={1} // Typing state: 1 for typing, 0 for stopped
+            minDelay={50} // Delay between characters
+            maxDelay={100} // Maximum delay between characters
+          > */}
+          <Text>Judgement</Text>
+          {/* </TypeWriter> */}
 
-          {/* <Link href="/Play" className="text-[40px] ">
-            Play
-          </Link>
-          <Link href="/Play" className="text-[40px]">
-            How to Play
-          </Link> */}
+          <View className="items-center w-3/5">
+            {/* Play Button */}
+            <Link href="/RoomSetting/RoomType" asChild>
+              <TouchableOpacity className="bg-[#28A745] py-3 px-5 rounded-2xl shadow-lg w-1/2 items-center mb-5 active:bg-btnClick">
+                <Text className="text-white font-special uppercase tracking-widest">
+                  Play
+                </Text>
+              </TouchableOpacity>
+            </Link>
+
+            {/* How to Play Button */}
+            <Link href="/RoomSetting/RoomSetting" asChild>
+              <TouchableOpacity className="bg-[#6610F2] py-3 px-5 rounded-2xl shadow-lg w-1/2 items-center active:bg-btnClick">
+                <Text className="text-white font-special uppercase tracking-widest">
+                  How to Play
+                </Text>
+              </TouchableOpacity>
+            </Link>
+          </View>
         </View>
-      </View>
-    </SafeAreaView>
+      </SafeAreaView>
+    </View>
   );
 };
-
-export const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 20,
-    justifyContent: "center",
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: "bold",
-    marginBottom: 20,
-    textAlign: "center",
-  },
-  status: {
-    fontSize: 16,
-    color: "green",
-    textAlign: "center",
-    marginBottom: 20,
-  },
-  inputContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginBottom: 20,
-  },
-  input: {
-    flex: 1,
-    borderWidth: 1,
-    borderColor: "#ccc",
-    borderRadius: 5,
-    padding: 10,
-    marginRight: 10,
-  },
-  message: {
-    fontSize: 16,
-    padding: 10,
-    borderBottomWidth: 1,
-    borderColor: "#eee",
-  },
-  messagesList: {
-    marginTop: 20,
-  },
-});
 
 export default App;
