@@ -1,107 +1,51 @@
-import React, { useState } from "react";
-import { StyleSheet, Text, View, Button, StatusBar, TouchableOpacity } from "react-native";
+import React from "react";
+import { View, StatusBar, TouchableOpacity, Text } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Link } from "expo-router";
-// import TypeWriter from "react-native-typewriter";
+import TypeWriter from "react-native-typewriter";
 
 const App = () => {
   return (
-    <SafeAreaView style={styles.safeArea}>
+    <View className="flex-1 bg-[#090959]">
       <StatusBar hidden={true} />
-      <View style={styles.container}>
-        <Text style={styles.title}>Judgement</Text>
-        <View style={styles.buttonContainer}>
-          {/* <Button
-            onPress={() => setRoomScreen(true)}
-            title="Play"
-            color="#3E7B27"
-            accessibilityLabel="Start the game"
-          />
-          <View style={styles.buttonSpacer} />
-          <Button
-            onPress={() => setHowToPlay(true)}
-            title="How to Play"
-            color="#841584"
-            accessibilityLabel="Learn how to play"
-          /> */}
-          <TouchableOpacity
-            style={styles.playButton}
-            onPress={() => setRoomScreen(true)}
+      <SafeAreaView className="flex-1">
+        <View className="flex-1 justify-center items-center w-full">
+          <TypeWriter
+            className="text-heading text-textPrimary mb-8 text-shadow-lg"
+            typing={1} // Typing state: 1 for typing, 0 for stopped
+            minDelay={50} // Delay between characters
+            maxDelay={100} // Maximum delay between characters
           >
-            <Text style={styles.buttonText}>Play</Text>
-          </TouchableOpacity>
-          {/* Spacer */}
-          <View style={styles.buttonSpacer} />
-          {/* How to Play Button */}
-          <TouchableOpacity
-            style={styles.howToPlayButton}
-            onPress={() => setHowToPlay(true)}
-          >
-            <Text style={styles.buttonText}>How to Play</Text>
-          </TouchableOpacity>
+          <View className="flex items-center justify-center">
+            <Text className="text-7xl text-textPrimary mb-8 text-shadow-lg">
+              Judgement
+            </Text>
+          </View>
+
+          </TypeWriter>
+
+          <View className="items-center w-3/5">
+            <Link href="/RoomSetting/RoomType" asChild>
+              <TouchableOpacity className="bg-[#28A745] py-3 px-5 rounded-2xl shadow-lg w-1/2 items-center mb-5 active:bg-btnClick">
+                <Text className="text-white font-special uppercase tracking-widest">
+                  Play
+                </Text>
+              </TouchableOpacity>
+            </Link>
+
+            {/* How to Play Button */}
+            <Link href="/RoomSetting/RoomSetting" asChild>
+              <TouchableOpacity className="bg-[#6610F2] py-3 px-5 rounded-2xl shadow-lg w-1/2 items-center active:bg-btnClick">
+                <Text className="text-white font-special uppercase tracking-widest">
+                  How to Play
+                </Text>
+              </TouchableOpacity>
+            </Link>
+          </View>
         </View>
       </SafeAreaView>
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  safeArea: {
-    flex: 1,
-    backgroundColor: "#010447",
-  },
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  title: {
-    fontSize: 50,
-    fontWeight: "bold",
-    color: "white",
-    marginBottom: 30,
-  },
-  buttonContainer: {
-    alignItems: "center",
-  },
-  buttonSpacer: {
-    height: 20,
-  },
-  playButton: {
-    backgroundColor: "#28A745", // Vibrant green
-    paddingVertical: 15,
-    paddingHorizontal: 40,
-    borderRadius: 30,
-    shadowColor: "rgba(0, 0, 0, 0.8)",
-    shadowOffset: { width: 0, height: 5 },
-    shadowOpacity: 0.8,
-    shadowRadius: 10,
-    elevation: 10,
-    width: "80%",
-    alignItems: "center",
-    marginBottom: 20,
-  },
-  howToPlayButton: {
-    backgroundColor: "#6610F2", // Vibrant purple
-    paddingVertical: 15,
-    paddingHorizontal: 40,
-    borderRadius: 30,
-    shadowColor: "rgba(0, 0, 0, 0.8)",
-    shadowOffset: { width: 0, height: 5 },
-    shadowOpacity: 0.8,
-    shadowRadius: 10,
-    elevation: 10,
-    width: "80%",
-    alignItems: "center",
-  },
-
-  buttonText: {
-    fontSize: 20,
-    fontWeight: "bold",
-    color: "white",
-    textTransform: "uppercase",
-    letterSpacing: 1,
-  },
-});
 
 export default App;
