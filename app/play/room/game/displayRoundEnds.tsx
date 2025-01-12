@@ -1,9 +1,9 @@
 import { Text, View } from "react-native"
 
-const DisplayROundEnds = () => {
+const DisplayRoundEnds = () => {
     return(
         <View><Text>Hello</Text></View>
     )
 }
 
-export default DisplayROundEnds;
+export default DisplayRoundEnds;
