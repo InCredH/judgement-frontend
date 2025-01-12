@@ -1,9 +1,15 @@
-import React from "react";
-import { View, StatusBar, TouchableOpacity, Text } from "react-native";
+import React, { useEffect } from "react";
+import { View, StatusBar, Text, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Link } from "expo-router";
+import * as NavigationBar from "expo-navigation-bar";
 
 const App = () => {
+  useEffect(() => {
+    NavigationBar.setBackgroundColorAsync("black");
+    NavigationBar.setVisibilityAsync("hidden");
+  }, []);
+
   return (
     <View className="flex-1 bg-white">
       <StatusBar hidden={true} />
@@ -24,7 +30,6 @@ const App = () => {
               </TouchableOpacity>
             </Link>
 
-            {/* How to Play Button */}
             <Link href="/howToPlay" asChild>
               <TouchableOpacity className="bg-[#6610F2] py-3 px-5 rounded-2xl shadow-lg w-1/2 items-center active:bg-btnClick">
                 <Text className="text-white font-special uppercase tracking-widest">
