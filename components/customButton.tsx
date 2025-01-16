@@ -1,9 +1,66 @@
-import { Text, View } from "react-native";
+import React from 'react';
+import { TouchableOpacity, Text, View, StyleSheet } from 'react-native';
 
-const CustomButton = () => {
-    return(
-        <View><Text>Hello</Text></View>
-    )
+interface CustomButtonProps {
+  title: string;
+  onPress: () => void;
+  color?: string;
+  accessibilityLabel?: string;
+  width:number;
 }
+
+const CustomButton: React.FC<CustomButtonProps> = ({ title, onPress, color = "#555555", accessibilityLabel, width }) => {
+  return (
+    <View style={styles(width).buttonContainer}>
+      <TouchableOpacity 
+        onPress={onPress} 
+        style={[styles(width).button, { backgroundColor: color }]} 
+        accessibilityLabel={accessibilityLabel || title}
+        >
+        <Text style={styles(width).buttonText}>{title}</Text>
+      </TouchableOpacity>
+    </View>
+  );
+};
+
+const styles = (width:number) => StyleSheet.create({
+  buttonContainer: {
+    marginBottom: 10,
+  },
+  button: {
+    width: width,
+    
+    height: 47,
+    borderRadius: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  buttonText: {
+    color: '#fff',
+    fontSize: 22,
+    fontFamily: 'Quicksand',
+    fontWeight: 'bold',
+  },
+});
+
+// const styles = StyleSheet.create({
+//   buttonContainer: {
+//     marginBottom: 10,
+//   },
+//   button: {
+//     width: 192,
+    
+//     height: 47,
+//     borderRadius: 10,
+//     alignItems: 'center',
+//     justifyContent: 'center',
+//   },
+//   buttonText: {
+//     color: '#fff',
+//     fontSize: 22,
+//     fontFamily: 'Quicksand',
+//     fontWeight: 'bold',
+//   },
+// });
 
 export default CustomButton;
