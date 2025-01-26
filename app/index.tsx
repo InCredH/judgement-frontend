@@ -18,7 +18,7 @@ const App = () => {
           </View>
 
             <View className="flex-row gap-2 sm:gap-10 md:gap-20">
-              <Link href="/play/room/roomLanding" asChild>
+              <Link href="/play/name" asChild>
                 <CustomButton
                   title="Play"
                   width = {192}

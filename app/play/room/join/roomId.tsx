@@ -17,7 +17,7 @@ const RoomId = () => {
         label="Enter Room Id: "
         value={text}
         onChangeText={handleInputChange}
-        placeholder="Enter your username"
+        placeholder=""
       />
 
       <Link href="/play/room/waitingRoom">
