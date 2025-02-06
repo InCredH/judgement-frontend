@@ -1,12 +1,16 @@
 import CustomButton from "@/components/customButton";
 import CustomInputWithLabel from "@/components/customInput";
-import { Link } from "expo-router";
-import { useState } from "react";
+import {
+  Link,
+  RelativePathString,
+  router,
+  useLocalSearchParams,
+} from "expo-router";
+import { useEffect, useState } from "react";
 import { Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const Name = () => {
-  const [roomSetting, setRoomSetting] = useState("");
   const [text, setText] = useState("");
   const [roomConfig, setRoomConfig] = useState(false);
 
@@ -14,18 +18,14 @@ const Name = () => {
     setText(input);
   };
 
+  const { roomSetting } = useLocalSearchParams();
+
   return (
     <SafeAreaView className="h-full py-5">
       <View className="h-full flex justify-between">
         {/* //Back Button */}
         <View className="">
-          <Link href="/" asChild>
-            <CustomButton
-              title="<<"
-              width={48}
-              onPress={() => console.log("back")}
-            />
-          </Link>
+          <CustomButton title="<<" width={48} onPress={() => router.back()} />
         </View>
         {/* Input  */}
         <View className=" items-center">
@@ -38,8 +38,15 @@ const Name = () => {
         </View>
 
         {/* next button  */}
-        <View className=" self-end">
-          <Link  href="/play/room/create/roomConfig" asChild>
+        <View className="mr-5 self-end">
+          <Link
+            href={
+              `/play/room/${roomSetting}/${
+                roomSetting == "create" ? "roomConfig" : "roomId"
+              }` as RelativePathString
+            }
+            asChild
+          >
             <CustomButton
               title="Next"
               width={91}

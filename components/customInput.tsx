@@ -43,8 +43,8 @@ const styles = StyleSheet.create({
   },
   label: {
     color: '#1E1E2C',
-    fontSize: 22,
-    fontFamily: 'Bubblegum sans',
+    fontSize: 20,
+    fontFamily: 'BubblegumSans',
     marginBottom: 12,
   },
   input: {
