@@ -6,11 +6,6 @@ import CustomInputWithLabel from "@/components/customInput";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const RoomLanding = () => {
-  const [text, setText] = useState("");
-
-  const handleInputChange = (input: string) => {
-    setText(input);
-  };
 
   return (
     <SafeAreaView className="h-full">

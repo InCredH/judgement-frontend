@@ -9,13 +9,30 @@ import {
 import { useEffect, useState } from "react";
 import { Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import axios from "axios";
 
 const Name = () => {
-  const [text, setText] = useState("");
+  const [name, setName] = useState("");
   const [roomConfig, setRoomConfig] = useState(false);
 
   const handleInputChange = (input: string) => {
-    setText(input);
+    setName(input);
+  };
+
+  const createPlayer = () => {
+    // TODO: check and show if name is not empty
+
+    axios
+      .post("http://192.168.29.169:8080/api/player/create", {
+        username: name,
+        isRoomOwner: roomSetting === "create" ? true : false,
+      })
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   const { roomSetting } = useLocalSearchParams();
@@ -31,7 +48,7 @@ const Name = () => {
         <View className=" items-center">
           <CustomInputWithLabel
             label="Enter your name: "
-            value={text}
+            value={name}
             onChangeText={handleInputChange}
             placeholder="Enter your username"
           />
@@ -50,7 +67,9 @@ const Name = () => {
             <CustomButton
               title="Next"
               width={91}
-              onPress={() => setRoomConfig(true)}
+              onPress={() => {
+                createPlayer();
+              }}
             />
           </Link>
         </View>
