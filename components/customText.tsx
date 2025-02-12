@@ -13,7 +13,7 @@ const CustomText: React.FC<CustomTextProps> = ({
   content,
   fontSize = 20,
   color = '#1E1E2C',
-  fontFamily = 'Bubblegum Sans',
+  fontFamily = 'BubblegumSans',
   style,
 }) => {
   return (

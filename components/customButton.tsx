@@ -43,7 +43,6 @@ const styles = (width: number) =>
       color: "#fff",
       fontSize: 22,
       fontFamily: "Quicksand",
-      fontWeight: "bold",
     },
   });
 
