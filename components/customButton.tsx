@@ -1,20 +1,26 @@
 import React from "react";
 import { TouchableOpacity, Text, View, StyleSheet } from "react-native";
 
-interface CustomButtonProps {
-  title: string;
-  onPress: () => void;
-  color?: string;
-  accessibilityLabel?: string;
-  width: number;
-}
+// interface CustomButtonProps {
+//   title: string;
+//   onPress: () => void;
+//   color?: string;
+//   accessibilityLabel?: string;
+//   width: number;
+// }
 
-const CustomButton: React.FC<CustomButtonProps> = ({
+const CustomButton = ({
   title,
   onPress,
   color = "#555555",
   accessibilityLabel,
   width,
+}: {
+    title: string;
+  onPress: () => void;
+  color?: string;
+  accessibilityLabel?: string;
+  width: number;
 }) => {
   return (
     <View>
@@ -45,25 +51,5 @@ const styles = (width: number) =>
       fontFamily: "Quicksand",
     },
   });
-
-// const styles = StyleSheet.create({
-//   buttonContainer: {
-//     marginBottom: 10,
-//   },
-//   button: {
-//     width: 192,
-
-//     height: 47,
-//     borderRadius: 10,
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//   },
-//   buttonText: {
-//     color: '#fff',
-//     fontSize: 22,
-//     fontFamily: 'Quicksand',
-//     fontWeight: 'bold',
-//   },
-// });
 
 export default CustomButton;

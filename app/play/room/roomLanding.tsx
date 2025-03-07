@@ -4,6 +4,8 @@ import CustomButton from "@/components/customButton";
 import { useState } from "react";
 import CustomInputWithLabel from "@/components/customInput";
 import { SafeAreaView } from "react-native-safe-area-context";
+import RoomConfig from "./create/roomConfig";
+import RoomId from "./join/roomId";
 
 const RoomLanding = () => {
 
